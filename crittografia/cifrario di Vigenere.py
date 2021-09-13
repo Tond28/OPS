@@ -1,7 +1,16 @@
-alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#inserire la parola nella variabile message (linea 90)
+#insert the word in the variable: message (line 90)
 
-letter_to_index=dict(zip(alphabet, range(len(alphabet))))
-index_to_letter=dict(zip(range(len(alphabet)), alphabet))
+#inserire la chiave di crittografia nella variabile message (linea 91)
+#insert the word in the variable: message (line 91)
+
+#INSERIRE LA PAROLA IN MAIUSCOLO
+#INSERT THE WORD IN CAPS
+
+ALPHABET="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+letter_to_index=dict(zip(ALPHABET, range(len(ALPHABET))))
+index_to_letter=dict(zip(range(len(ALPHABET)), ALPHABET))
 
 def encrypt(message, key):
     encrypted=""
@@ -19,13 +28,13 @@ def encrypt(message, key):
     #separa il messaggio nella lunghezza della chiave
     split_message=[mes[i:i + len(key)] for i in range(0, len(mes), len(key))]
 
-    #convertire il messaggio in indice e aggiungere la chiave
+    #converte il messaggio in indice e aggiunge la chiave
     for each_split in split_message:
         i=0
     
         for letter in each_split:
                 
-            number=(letter_to_index[letter]+letter_to_index[key[i]])%len(alphabet)
+            number=(letter_to_index[letter]+letter_to_index[key[i]])%len(ALPHABET)
             encrypted+=index_to_letter[number]
             i+=1
     
@@ -55,13 +64,13 @@ def decrypt(cipher,key):
     #separa il messaggio nella lunghezza della chiave
     split_cipher=[mes[i:i + len(key)] for i in range(0, len(mes), len(key))]
 
-    #convertire il cifrario in indece e sottrarre la chiave
+    #converte il cifrario in indece e sottrarre la chiave
     for each_split in split_cipher:
         i=0
     
         for letter in each_split:
             
-            number=(letter_to_index[letter]-letter_to_index[key[i]])%len(alphabet)
+            number=(letter_to_index[letter]-letter_to_index[key[i]])%len(ALPHABET)
             decrypted+=index_to_letter[number]
                 
             i+=1
@@ -78,7 +87,7 @@ def decrypt(cipher,key):
 
 
 def main():
-    message="CAVZPEGRGYZT CWRJ ETTVWP"
+    message="WORD"
     key="CLGF"
     scelta=input("Scrivere <criptare> o <decriptare> per selezionare la modalità preferita:  ")
     if scelta=="criptare":
